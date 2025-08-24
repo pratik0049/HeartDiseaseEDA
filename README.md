@@ -1,57 +1,73 @@
-🩺 Heart Disease Data Analysis
+# 🩺 Heart Disease Data Analysis
 
-Dataset Overview
-Dataset loaded: heart.csv
+## 📌 Project Overview
+This project analyzes patient health records to identify factors associated with **heart disease**.  
+The dataset includes demographic, clinical, and lifestyle features, and the goal is to understand patterns and correlations that influence the presence of heart disease.
 
-Shape: (rows × columns) → The dataset contains patient health records.
+---
 
-Features include Age, Sex, Chest Pain Type, Resting Blood Pressure, Cholesterol, Fasting Blood Sugar, ECG Results, Max Heart Rate, Exercise-induced Angina, Oldpeak (ST depression), Slope, Major Vessels, Thalassemia, and Target (heart disease presence).
+## 1️⃣ Dataset Overview
+- **File:** `heart.csv`  
+- **Shape:** (rows × columns) → Contains patient health records.  
+- **Features:**
+  - Age
+  - Sex
+  - Chest Pain Type (cp)
+  - Resting Blood Pressure (RestingBP)
+  - Cholesterol
+  - Fasting Blood Sugar (FBS)
+  - ECG Results (RestECG)
+  - Max Heart Rate (MaxHR / thalach)
+  - Exercise-induced Angina (exang)
+  - Oldpeak (ST depression)
+  - Slope of ST segment
+  - Major Vessels (ca)
+  - Thalassemia (thal)
+  - **Target** → Heart disease presence (1 = Yes, 0 = No)
 
-Data Quality Check
-No missing values were found.
+---
 
-No duplicates remain after cleaning.
+## 2️⃣ Data Quality Check
+✔ No missing values found  
+✔ No duplicate rows after cleaning  
+✔ Data types are consistent (`int`, `float`, and categorical)  
 
-Data types are consistent (int, float, and categorical).
+---
 
-Exploratory Data Analysis (EDA)
-Age Distribution: Most patients are in the range of 40–60 years.
+## 3️⃣ Exploratory Data Analysis (EDA)
+- **Age Distribution:** Most patients are between **40–60 years old**.  
+- **Gender:** Higher proportion of **male patients** in the dataset.  
+- **Chest Pain Type:** Certain pain types strongly linked to heart disease.  
+- **Resting BP & Cholesterol:** Wide variation; extreme outliers handled.  
+- **Max Heart Rate (thalach):** Patients with heart disease tend to have **lower max HR**.  
+- **Oldpeak:** Higher ST depression correlates with higher chance of heart disease.  
 
-Gender: Higher proportion of male patients in the dataset.
+---
 
-Chest Pain Type (cp): Certain pain types are strongly associated with heart disease.
+## 4️⃣ Correlation Analysis
+Target (heart disease) is most correlated with:  
+- Chest Pain Type (`cp`)  
+- Exercise-induced Angina (`exang`)  
+- ST Depression (`oldpeak`)  
+- Slope of ST Segment (`slope`)  
+- Maximum Heart Rate (`thalach`)  
 
-Resting BP & Cholesterol: Wide variation observed, but extreme outliers were removed/handled.
+📊 Heatmaps & pairplots confirm relationships between numeric features and target.  
 
-Max Heart Rate (thalach): Patients with heart disease tend to have lower max HR compared to healthy individuals.
+---
 
-Oldpeak: Higher ST depression values (Oldpeak) correlate with higher chance of heart disease.
+## 5️⃣ Data Preprocessing
+- **Categorical encoding:** `pd.get_dummies()` used for categorical variables.  
+- **Boolean conversion:** Converted to `0/1`.  
+- **Scaling:** Applied `StandardScaler` to numeric features (`Age`, `RestingBP`, `Cholesterol`, `MaxHR`, `Oldpeak`).  
 
-Correlation Analysis
-Target variable (Heart Disease) is most correlated with:
+---
 
-Chest pain type (cp)
+## 6️⃣ Key Insights
+- Patients with **typical angina** and **higher MaxHR** are **less likely** to have heart disease.  
+- Patients with **exercise-induced angina**, **high oldpeak**, and **abnormal ECG results** are **more likely** to have heart disease.  
+- **Lifestyle factors** such as cholesterol and resting BP influence risk, but weaker predictors compared to ECG, angina, and oldpeak.  
 
-Exercise-induced angina (exang)
+---
 
-ST depression (oldpeak)
-
-Slope of ST segment (slope)
-
-Maximum heart rate (thalach)
-
-Heatmap & pairplots confirm relationships between numeric features and target.
-
-Data Preprocessing
-Categorical variables encoded with pd.get_dummies.
-
-Booleans converted into 0/1.
-
-Scaling applied to numeric variables (Age, RestingBP, Cholesterol, MaxHR, Oldpeak) using StandardScaler.
-
-Key Insights
-Patients with typical angina and higher max HR are less likely to have heart disease.
-
-Patients with exercise-induced angina, high oldpeak, and abnormal ECG results show a higher chance of heart disease.
-
-Lifestyle factors such as cholesterol and resting BP play a role but are weaker predictors compared to ECG, angina, and oldpeak.
+## 📂 Repository Structure
